@@ -9,7 +9,7 @@ import { initStorage } from "./storage.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const publicPath = __dirname;
+const publicPath = path.join(__dirname, "public");
 const app = express();
 app.use(express.static(publicPath));
 
