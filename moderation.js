@@ -24,6 +24,23 @@ export function initModeration(client) {
     if (type) {
       const target = await client.users.fetch(targetId).catch(() => null);
       if (target) {
+        if (type === "timeout") {
+          const timeoutChange = entry.changes.find(c => c.key === "communication_disabled_until");
+          if (timeoutChange && timeoutChange.new) {
+            const until = new Date(timeoutChange.new);
+            const now = new Date();
+            const diffMs = until - now;
+            const diffMin = Math.round(diffMs / 60000);
+            
+            if (diffMin >= 60 * 24) {
+              duration = `${Math.round(diffMin / (60 * 24))} Tag(e)`;
+            } else if (diffMin >= 60) {
+              duration = `${Math.round(diffMin / 60)} Stunde(n)`;
+            } else {
+              duration = `${diffMin} Minute(n)`;
+            }
+          }
+        }
         await sendPunishmentInfo(target, type, reason || "Kein Grund angegeben.", duration);
       }
     }
