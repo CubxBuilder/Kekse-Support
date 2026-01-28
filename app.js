@@ -9,8 +9,9 @@ import { initStorage } from "./storage.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const publicPath = __dirname;
 const app = express();
-app.use(express.static(__dirname));
+app.use(express.static(publicPath));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "0.0.0.0", () => {
