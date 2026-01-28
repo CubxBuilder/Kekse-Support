@@ -1,13 +1,22 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js"
 import "dotenv/config"
-import express from "express"
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import { initSupport } from "./support.js";
 import { initStorage } from "./storage.js";
-const app = express()
-const PORT = process.env.PORT || 5000
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.static(__dirname));
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server läuft auf Port ${PORT}`)
-})
+  console.log(`Server läuft auf Port ${PORT}`);
+});
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
