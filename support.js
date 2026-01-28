@@ -20,8 +20,9 @@ export async function initSupport(client) {
 
     /* === .help === */
     if (msg.guild && msg.content === ".help") {
+      msg.delete().catch(() => {});
       if (OPEN_HELP.has(msg.author.id)) {
-        return msg.reply("Du hast bereits einen offenen Support-Channel.").then(m => setTimeout(() => m.delete().catch(() => {}), 5000));
+        return msg.channel.send(`<@${msg.author.id}>, du hast bereits einen offenen Support-Channel.`).then(m => setTimeout(() => m.delete().catch(() => {}), 5000));
       }
 
       const userMsg = msg;
