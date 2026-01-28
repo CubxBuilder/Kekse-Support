@@ -1,7 +1,8 @@
-import { Client, GatewayIntentBits, Partials } from "discord.js";
+import { Client, GatewayIntentBits, Partials } from "discord.js"
+import "dotenv/config"
+import express from "express"
 import { initSupport } from "./support.js";
 import { initStorage } from "./storage.js";
-import "dotenv/config";
 const PORT = process.env.PORT || 5000
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server läuft auf Port ${PORT}`)
