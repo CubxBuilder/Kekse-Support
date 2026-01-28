@@ -19,5 +19,8 @@ client.once("clientReady", async () => {
   await initStorage(client);
   initSupport(client);
 });
-
+client.user.setPresence({
+    activities: [{ name: "!help", type: 0 }],
+    status: "online"
+  });
 client.login(process.env.BOT_TOKEN);
