@@ -18,9 +18,9 @@ client.once("clientReady", async () => {
   console.log(`Bot eingeloggt als ${client.user.tag}`);
   await initStorage(client);
   initSupport(client);
-});
-client.user.setPresence({
+  client.user.setPresence({
     activities: [{ name: ".help", type: 0 }],
     status: "online"
   });
+});
 client.login(process.env.BOT_TOKEN);
