@@ -50,7 +50,7 @@ dein Account auf \`Kekse Clan\` hat eine Strafe erhalten: **${label}**.
 
 Grund: ${reason}${sectionTitle ? ` (${sectionTitle})` : ""}${durationText}${ruleText}
 
-Um sicherzustellen, dass unsere Community sicher und freundlich bleibt, befolge bitte unsere Regeln. Die vollständigen Regeln findest du hier: https://discord.com/channels/1423413347168157718/1423413348065611949
+Um sicherzustellen, dass unsere Community sicher und freundlich bleibt, befolge bitte unsere Regeln. Die vollständigen Regeln findest du hier: https://discord.com/channels/1423413347168157718/1423413348065611949`;
 
   await user.send(message).catch(() => console.log(`Konnte DM an ${user.tag} nicht senden.`));
 }
