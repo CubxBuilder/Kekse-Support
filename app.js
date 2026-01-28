@@ -20,7 +20,7 @@ client.once("clientReady", async () => {
   initSupport(client);
 });
 client.user.setPresence({
-    activities: [{ name: "!help", type: 0 }],
+    activities: [{ name: ".help", type: 0 }],
     status: "online"
   });
 client.login(process.env.BOT_TOKEN);
