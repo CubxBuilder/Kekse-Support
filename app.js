@@ -8,6 +8,7 @@ import { initStorage } from "./storage.js";
 import { sendPunishmentInfo } from "./info.js";
 import { initModeration } from "./moderation.js";
 import { clear } from "./clear.js";
+import { warning } from "./warning.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,6 +39,7 @@ client.once("clientReady", async () => {
   await initStorage(client);
   initSupport(client);
   clear(client);
+  warning(client);
   client.user.setPresence({
     activities: [{ name: ".help", type: 0 }],
     status: "online"
