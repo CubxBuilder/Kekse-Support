@@ -7,6 +7,7 @@ import { initSupport } from "./support.js";
 import { initStorage } from "./storage.js";
 import { sendPunishmentInfo } from "./info.js";
 import { initModeration } from "./moderation.js";
+import { initClear } from "./clear.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,6 +37,7 @@ client.once("clientReady", async () => {
   console.log(`Bot eingeloggt als ${client.user.tag}`);
   await initStorage(client);
   initSupport(client);
+  initClear(client);
   client.user.setPresence({
     activities: [{ name: ".help", type: 0 }],
     status: "online"
