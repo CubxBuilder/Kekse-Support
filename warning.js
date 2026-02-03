@@ -18,16 +18,16 @@ export async function warning(client) {
       const phonePattern = /(\+?\d[\d\s-]{7,20}\d)/;
       if (phonePattern.test(msg)) return "Telefonnummer";
 
+      const codePattern = /^(?=.*[0-9])[A-Z0-9-]{6,20}$/i;
+
       for (const word of words) {
         const alnum = word.replace(/-/g, "");
 
-        // Keywords oder "code" triggern Prüfung
-        if (suspiciousKeywords.some(k => word.toLowerCase().includes(k)) || hasCodeKeyword) {
-          // Code-Erkennung: 6–20 Zeichen, alphanumerisch, mindestens eine Zahl
-          if (/^[A-Z0-9-]{6,20}$/i.test(word) && /[0-9]/.test(alnum)) {
-            return "Gutschein-Code";
-          }
+        if (codePattern.test(word)) {
+          return "Gutschein-Code";
         }
+        if ((suspiciousKeywords.some(k => word.toLowerCase().includes(k)) || hasCodeKeyword) && codePattern.test(word)) {
+          return "Gutschein-Code";
       }
 
       return null;
