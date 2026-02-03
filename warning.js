@@ -18,6 +18,7 @@ export async function warning(client) {
       const phonePattern = /(\+?\d[\d\s-]{7,20}\d)/;
       if (phonePattern.test(msg)) return "Telefonnummer";
 
+      // Code-Pattern: alphanumerisch, 6–20 Zeichen, mindestens eine Zahl, Bindestriche erlaubt
       const codePattern = /^(?=.*[0-9])[A-Z0-9-]{6,20}$/i;
 
       for (const word of words) {
@@ -26,8 +27,11 @@ export async function warning(client) {
         if (codePattern.test(word)) {
           return "Gutschein-Code";
         }
+
+        // Keywords oder "code" triggern nochmal Prüfung
         if ((suspiciousKeywords.some(k => word.toLowerCase().includes(k)) || hasCodeKeyword) && codePattern.test(word)) {
           return "Gutschein-Code";
+        }
       }
 
       return null;
