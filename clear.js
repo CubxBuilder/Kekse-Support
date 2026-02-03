@@ -4,7 +4,7 @@ export async function clear(client) {
   client.on("messageCreate", async (message) => {
     if (!message.content.startsWith("!clear")) return;
 
-    const allowedRole = "1424020019070898186";
+    const allowedRole = "1457906448234319922";
     if (!message.member.roles.cache.has(allowedRole)) {
       await message.delete().catch(() => {});
       const warnMsg = await message.channel.send("Du hast keine Berechtigung für diesen Befehl!");
