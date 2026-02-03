@@ -9,6 +9,7 @@ import { sendPunishmentInfo } from "./info.js";
 import { initModeration } from "./moderation.js";
 import { clear } from "./clear.js";
 import { warning } from "./warning.js";
+import { violations } from "./violations.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,5 +46,6 @@ client.once("clientReady", async () => {
     status: "online"
   });
   initModeration(client);
+  violations(client);
 });
 client.login(process.env.BOT_TOKEN);
