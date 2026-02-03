@@ -15,7 +15,7 @@ export async function warning(client) {
       const emailPattern = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i;
       if (emailPattern.test(msg)) return "E-Mail-Adresse";
 
-      const phonePattern = /(?<![@#])\+?\d[\d\s-]{7,20}\d/;
+      const phonePattern = /(?<![@#\w])\+?\d[\d\s-]{7,20}\d/;
       if (phonePattern.test(msg)) return "Telefonnummer";
 
 
