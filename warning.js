@@ -22,6 +22,8 @@ export async function warning(client) {
       const codePattern = /^(?=.*[0-9])[A-Z0-9-]{6,20}$/i;
 
       for (const word of words) {
+        if (word.startsWith(":") && word.endsWith(":")) continue;
+
         if (codePattern.test(word)) return "Gutschein-Code";
         if ((suspiciousKeywords.some(k => word.toLowerCase().includes(k)) || hasCodeKeyword) && codePattern.test(word)) {
           return "Gutschein-Code";
